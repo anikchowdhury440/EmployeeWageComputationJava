@@ -4,12 +4,14 @@ public class EmpWageComputation
 	public static final int IS_PART_TIME=2;
 	public static final int EMP_RATE_PER_HOUR=20;
 	public static final int NUM_WORKING_DAYS=20;
+	public static final int MAX_WORKING_HRS=100;
 	public static void main(String[] args)
 	{
-		int empHrs, empWage, totalEmpWage=0;
+		int empHrs, totalEmpWage, totalEmpHrs=0, totalWorkingDays=0;
 		System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
-		for ( int day = 0; day < NUM_WORKING_DAYS; day++ )
+		while ( totalEmpHrs <= MAX_WORKING_HRS && totalWorkingDays < NUM_WORKING_DAYS )
                 {
+			totalWorkingDays++;
 			int empCheck=(int)Math.floor(Math.random()*10)%3;
 			switch (empCheck)
 			{
@@ -22,10 +24,25 @@ public class EmpWageComputation
 				default:
 					empHrs=0;
 			}
-			empWage = empHrs * EMP_RATE_PER_HOUR;
-			totalEmpWage += empWage;
-			System.out.println("Emp Eage: " + empWage);
+			if (totalEmpHrs > 96)
+			{
+				if (empHrs==8 || empHrs==4)
+				{
+					break;
+				}
+			}
+			if (totalEmpHrs > 92 )
+			{
+				if (empHrs==8)
+				{
+					break;
+				}
+			}
+			totalEmpHrs += empHrs;
+			System.out.println("Day" + totalWorkingDays + " Emp Hr: " +empHrs);
 		}
+		totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+		System.out.println("Total Emp Hour: " + totalEmpHrs);
 		System.out.println("Total Emp Wage: " + totalEmpWage);
 	}
 }
