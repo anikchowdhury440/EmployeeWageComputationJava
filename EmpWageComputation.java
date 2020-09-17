@@ -31,11 +31,11 @@ public class EmpWageComputation
                 totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
                 System.out.println("Total Emp Hour: " + totalEmpHrs);
                 System.out.println("Total Emp Wage: " + totalEmpWage);
-
+		return totalEmpWage;
 	}
 
 	public static void main(String[] args)
 	{
-		computeEmpWage()
+		computeEmpWage();
 	}
 }
