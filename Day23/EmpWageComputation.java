@@ -1,3 +1,9 @@
+interface IComputeEmpWage
+{
+	public void addCompanyEmpWage(String company, int empRatePerHour, int numWorkingDays, int maxWorkingHrs);
+	public void computeEmpWage();
+}
+
 class CompanyEmpWage
 {
 	public final String company;
@@ -26,7 +32,7 @@ class CompanyEmpWage
 
 }
 
-public class EmpWageComputation
+public class EmpWageComputation implements IComputeEmpWage
 {
 	public static final int IS_FULL_TIME=1;
 	public static final int IS_PART_TIME=2;
@@ -39,13 +45,13 @@ public class EmpWageComputation
 		companyEmpWageArray = new CompanyEmpWage[5];
 	}
 
-	private void addCompanyEmpWage(String company, int empRatePerHour, int numWorkingDays, int maxWorkingHrs)
+	public void addCompanyEmpWage(String company, int empRatePerHour, int numWorkingDays, int maxWorkingHrs)
 	{
 		companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numWorkingDays, maxWorkingHrs);
 		numOfCompany++;
 	}
 
-	private void computeEmpWage()
+	public void computeEmpWage()
 	{
 		for ( int i = 0; i < numOfCompany; i++ )
 		{
@@ -54,7 +60,7 @@ public class EmpWageComputation
 		}
 	}
 
-	private int computeEmpWage(CompanyEmpWage companyEmpWage)
+	public int computeEmpWage(CompanyEmpWage companyEmpWage)
 	{
 		int empHrs, totalEmpHrs=0, totalWorkingDays=0;
                 while ( totalEmpHrs <= companyEmpWage.maxWorkingHrs && totalWorkingDays < companyEmpWage.numWorkingDays )
