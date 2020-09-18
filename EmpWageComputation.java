@@ -24,20 +24,6 @@ public class EmpWageComputation
 				default:
 					empHrs=0;
 			}
-			if (totalEmpHrs > 96)
-			{
-				if (empHrs==8 || empHrs==4)
-				{
-					break;
-				}
-			}
-			if (totalEmpHrs > 92 )
-			{
-				if (empHrs==8)
-				{
-					break;
-				}
-			}
 			totalEmpHrs += empHrs;
 			System.out.println("Day" + totalWorkingDays + " Emp Hr: " +empHrs);
 		}
