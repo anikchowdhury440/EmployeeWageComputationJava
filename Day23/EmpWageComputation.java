@@ -4,6 +4,7 @@ interface IComputeEmpWage
 {
 	public void addCompanyEmpWage(String company, int empRatePerHour, int numWorkingDays, int maxWorkingHrs);
 	public void computeEmpWage();
+	public int getTotalWage(String company);
 }
 
 class CompanyEmpWage
@@ -66,6 +67,11 @@ public class EmpWageComputation implements IComputeEmpWage
 		}
 	}
 
+	public int getTotalWage(String company)
+	{
+		return companyToEmpWageMap.get(company).totalEmpWage;
+	}
+
 	public int computeEmpWage(CompanyEmpWage companyEmpWage)
 	{
 		int empHrs, totalEmpHrs=0, totalWorkingDays=0;
@@ -96,6 +102,7 @@ public class EmpWageComputation implements IComputeEmpWage
 		empWageComputation.addCompanyEmpWage("DMart",20,2,10);
 		empWageComputation.addCompanyEmpWage("Reliance",10,4,20);
 		empWageComputation.computeEmpWage();
+		System.out.println("Total Wage for DMart Comapny: " + empWageComputation.getTotalWage("DMart"));
 	}
 
 }
