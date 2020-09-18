@@ -41,16 +41,19 @@ public class EmpWageComputation implements IComputeEmpWage
 
 	private int numOfCompany = 0;
 	private ArrayList<CompanyEmpWage> companyEmpWageList;
+	private Map<String,CompanyEmpWage> companyToEmpWageMap;
 
 	public EmpWageComputation()
 	{
 		companyEmpWageList = new ArrayList<>();
+		companyToEmpWageMap = new HashMap<>();
 	}
 
 	public void addCompanyEmpWage(String company, int empRatePerHour, int numWorkingDays, int maxWorkingHrs)
 	{
 		CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numWorkingDays, maxWorkingHrs);
 		companyEmpWageList.add(companyEmpWage);
+		companyToEmpWageMap.put(company, companyEmpWage);
 	}
 
 	public void computeEmpWage()
